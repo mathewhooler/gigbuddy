@@ -2,10 +2,10 @@ const Gig = require('../models/gig');
 
 module.exports = {
   create,
-  delete: deleteDetail
+  delete: deleteDetails
 };
 
-async function deleteDetail(req, res) {
+async function deleteDetails(req, res) {
   const gig = await Gig.findOne({ 'details._id': req.params.id, 'details.user': req.user._id });
   if (!gig) return res.redirect('/gigs');
 

@@ -21,6 +21,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function() {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.get('views/gigs/new', (req, res) => {
+  res.render('new', { title: 'New Gig' });
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

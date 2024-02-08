@@ -17,7 +17,7 @@ async function show(req, res) {
 }
 
 function newGig(req, res) {
-  res.render('gigs/new', { title: 'Add Gig', errorMsg: '' });
+  res.render('gigs/new', { title: 'ADD GIG', errorMsg: '' });
 }
 
 async function create(req, res) {

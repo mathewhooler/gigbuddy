@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const detailSchema = new Schema({
+const detailsSchema = new Schema({
   content: {
     type: String,
     required: true
@@ -26,7 +26,7 @@ const gigSchema = new Schema({
   venue: {type: String,},
   date:  {type: String,},
   time:  {type: String,},
-  details: [detailSchema]
+  details: [detailsSchema]
 }, {
   timestamps: true
 });
