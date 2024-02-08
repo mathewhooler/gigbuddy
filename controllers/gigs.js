@@ -21,11 +21,13 @@ function newGig(req, res) {
 }
 
 async function create(req, res) {
-
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
   try {
     const gig = await Gig.create(req.body);
 
-    res.redirect(`/gigs/${movie._id}`);
+    res.redirect(`/gigs/${gig._id}`);
   } catch (err) {
     console.log(err);
     res.render('gigs/new', { errorMsg: err.message });
