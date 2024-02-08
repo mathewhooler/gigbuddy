@@ -1,15 +1,29 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/gigs" method="POST">
-  <label>Venue:</label>
+
+<form id="new-form" action="/gigs" method="POST" enctype="multipart/form-data">
+  <label>Band/Artist:</label>
   <input type="text" name="title">
+  <label>Support:</label>
+  <input type="text" name="support">
+  <label>Venue:</label>
+  <input type="text" name="venue">
+  <label>Date:</label>
+  <input type="date" name="date" class="custom-date-input">
   <label>Time:</label>
-  <input type="text" name="date">
-  <label>Date</label>
-  <select name="time">
-    <option value="G">G</option>
-  </select>
-  <input type="submit" value="Add Gig">
+  <input type="text" id="time" name="time">
+  <label>Price:</label>
+  <input type="text" name="price">
+  <label>Ticket Link:</label>
+  <input type="url" name="website">
+  <label>Spotify Link:</label>
+  <input type="url" name="website">
+  <label>Image:</label>
+  <input type="file" name="image">
+  <input type="submit" value="Add Gig" class="custom-button">
 </form>
+
+
+
 
 <%- include('../partials/footer') %>
