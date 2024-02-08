@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/gigs" method="POST">
+  <label>Venue:</label>
+  <input type="text" name="title">
+  <label>Time:</label>
+  <input type="text" name="date">
+  <label>Date</label>
+  <select name="time">
+    <option value="G">G</option>
+  </select>
+  <input type="submit" value="Add Gig">
+</form>
+
+<%- include('../partials/footer') %>
