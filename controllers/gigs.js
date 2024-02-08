@@ -14,6 +14,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const gig = await Gig.findById(req.params.id);
+  res.render('gigs/show', { title: 'Gig Details', movie });
 }
 
 function newGig(req, res) {

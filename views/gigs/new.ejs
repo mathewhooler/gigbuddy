@@ -1,27 +1,51 @@
 <%- include('../partials/header') %>
 
 <form id="new-form" action="/gigs" method="POST" enctype="multipart/form-data">
-  <label>Band/Artist:</label>
-    <input type="text" name="title">
+  <label>Title:</label>
+    <input
+      type="text"
+      name="title">
   <label>Venue:</label>
-    <input type="text" name="venue">
+    <input
+      type="text"
+      name="venue">
   <label>Date:</label>
-    <input type="text" name="date">
+    <input
+      type="text"
+      name="date">
   <label>Time:</label>
-    <input type="text" id="time" name="time">
+    <input
+      type="text"
+      id="time"
+      name="time">
   <label>Event Info:</label>
-    <input type="text" name="support">
+    <input
+      type="text"
+      name="support">
   <label>Support:</label>
-    <input type="text" name="support">
+    <input
+      type="text"
+      name="support">
   <label>Price:</label>
-    <input type="text" name="price">
+    <input
+      type="text"
+      name="price">
   <label>Ticket Link:</label>
-    <input type="url" name="website">
+    <input
+      type="url"
+      name="website">
   <label>Spotify Link:</label>
-    <input type="url" name="website">
+    <input
+      type="url"
+      name="website">
   <label>Image:</label>
-    <input type="file" name="image">
-  <input type="submit" value="Add Gig" class="custom-button">
+    <input
+      type="file"
+      name="image">
+  <input
+      type="submit"
+      value="Add Gig"
+      class="custom-button">
 </form>
 
 <%- include('../partials/footer') %>

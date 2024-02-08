@@ -124,16 +124,14 @@ table td {
   font-weight: bold;
 }
 
-#add-details-form,
-#add-performer-form {
+#add-details-form, {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
 }
 
-#add-details-form input[type="submit"],
-#add-performer-form input[type="submit"]  {
+#add-details-form input[type="submit"],{
   width: 10rem;
   grid-column: 2 / 3;
 }
