@@ -1,15 +1,29 @@
 const Gig = require('../models/gig');
 const title = 'New Gig';
 
+
 module.exports = {
   index,
   show,
   new: newGig,
   delete: deleteGig,
-  create,
   update,
+  create,
   edit,
 };
+
+async function index(req, res) {
+  const gigs = await Gig.find({});
+  res.render('gigs/index', { title: '', gigs });
+}
+async function show(req, res) {
+  const gig = await Gig.findById(req.params.id);
+  res.render('gigs/show', { title: 'GIG DETAILS', gig });
+}
+
+function newGig(req, res) {
+  res.render('gigs/new', { title: 'ADD GIG', errorMsg: '' });
+}
 
 async function update(req, res) {
   const gig = await Gig.findOne({'comments._id': req.params.id});
@@ -35,39 +49,13 @@ async function deleteGig(req, res) {
 }
 
 async function edit(req, res) {
-  const gig = await Gig.findOne({_id: req.params.id});
-  if (!gig) return res.redirect('/gigs');
-  res.render('gigs/edit', { gig });
+  const gig = await Gig.findOne({'comments._id': req.params.id});
+  const comment = gig.comments.id(req.params.id);
+  res.render('comments/edit', { comment });
 }
 
 
-// async function update(req, res) {
-//   try {
-//     const updatedGig = await Gig.findOneAndUpdate(
-//       {_id: req.params.id},
-//       req.body,
-//       {new: true}
-//     );
-//     return res.redirect(`/gigs/${updatedGig._id}`);
-//   } catch (e) {
-//     console.log(e.message);
-//     return res.redirect('/gigs');
-//   }
-// }
 
-async function index(req, res) {
-  const gigs = await Gig.find({});
-  res.render('gigs/index', { title: '', gigs });
-}
-
-async function show(req, res) {
-  const gig = await Gig.findById(req.params.id);
-  res.render('gigs/show', { title: 'GIG DETAILS', gig });
-}
-
-function newGig(req, res) {
-  res.render('gigs/new', { title: 'ADD GIG', errorMsg: '' });
-}
 
 async function create(req, res) {
   console.log(req.body);
@@ -76,11 +64,14 @@ async function create(req, res) {
   }
   try {
     const gig = await Gig.create(req.body);
-
+    req.body.userId = req.user._id;
+    req.body.userName = req.user.name;
     res.redirect(`/gigs/${gig._id}`);
+    gig.comments.push(req.body);
+    await gig.save();
   } catch (err) {
     console.log(err);
     res.render('gigs/new', { errorMsg: err.message });
   }
-
+  res.redirect(`/gigs/${gig._id}`);
 };

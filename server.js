@@ -14,14 +14,11 @@ require('./config/passport');
 
 const indexRouter = require('./routes/index');
 const gigsRouter = require('./routes/gigs');
-const detailsRouter = require('./routes/details');
 
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
-
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
@@ -46,7 +43,6 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/gigs', gigsRouter);
-app.use('/', detailsRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

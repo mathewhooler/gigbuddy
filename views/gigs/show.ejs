@@ -30,20 +30,12 @@
       
     </section>
     
+<!-- Using the RESTful route to send the book's id to the server -->
+<form action="/gigs/<%= gig.id %>/comments" method="PUT">
+    <!-- Be sure name attributes of inputs match the model properties -->
+    <input name="text">
+    <button type="submit">ADD COMMENT</button>
+  </form>
 
-
-    <form action="/gigs/<%= gig._id %>/comments" method="POST" style="display: inline;">
-
-                 <input name="text">
-                   <button type="submit">ADD COMMENT</button>
- 
-     <form action="/comments/<%= gig._id %>?_method=PUT" method="POST" style="display: inline;">
-                 <button type="submit">UPDATE COMMENT</button>
-     </form>
-     
-    <form action="/comments/<%= gig._id %>?_method=DELETE" method="POST" style="display: inline;">
-                    <button type="submit">DELETE COMMENT</button>
-    </form>
-    
 
 <%- include('../partials/footer') %>
