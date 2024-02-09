@@ -6,18 +6,36 @@ module.exports = {
   new: newGig,
   delete: deleteGig,
   create,
+  update,
+  edit,
 };
 
 async function deleteGig(req, res) {
-  const gig = await Gig.findOne({ 
-    'gig._id': req.params.id,
-    'gig.user': req.user._id
-  });
-  if (!gig) return res.redirect('/gigs');
+  await Gig.findOneAndDelete(
+    {_id: req.params.id,}
+  );
+  res.redirect('/books');
+}
 
-  gig.remove(req.params.id);
-  await gig.save();
-  res.redirect(`/gigs/${gig._id}`);
+async function edit(req, res) {
+  const gig = await Gig.findOne({_id: req.params.id});
+  if (!gig) return res.redirect('/gigs');
+  res.render('gigs/edit', { gig });
+}
+
+
+async function update(req, res) {
+  try {
+    const updatedGig = await Gig.findOneAndUpdate(
+      {_id: req.params.id},
+      req.body,
+      {new: true}
+    );
+    return res.redirect(`/gigs/${updatedGig._id}`);
+  } catch (e) {
+    console.log(e.message);
+    return res.redirect('/gigs');
+  }
 }
 
 async function index(req, res) {

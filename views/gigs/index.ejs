@@ -1,22 +1,28 @@
 <%- include('../partials/header') %>
 
 <% if (user) { %>
-<table id="list">
-  <thead>
-    <tr>
-      <th><%= title %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% gigs.forEach(function(m) { %>
+  <table id="list">
+    <thead>
       <tr>
-        <td><%= m.title %></td>
-        <td><a href="/gigs/<%= m._id %>">DETAILS</a></td>
+        <th><%= title %></th>
+        <th>Actions</th>
       </tr>
+    </thead>
+    <tbody>
+      <% gigs.forEach(function(m) { %>
+        <tr>
+          <td><%= m.title %></td>
+          <td>
+            <a href="/gigs/<%= m._id %>">DETAILS</a>
+            <a href="/gigs/update/<%= m._id %>">UPDATE</a>
+            <form method="POST" action="/gigs/delete/<%= m._id %>" style="display: inline;">
+              <button type="submit">DELETE</button>
+            </form>
+          </td>
+        </tr>
       <% }); %>
     </tbody>
-    <% } %>
   </table>
+  <% } %>
   
 <%- include('../partials/footer') %>

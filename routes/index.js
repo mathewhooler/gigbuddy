@@ -14,7 +14,6 @@ router.get('/auth/google', passport.authenticate(
   }
 ));
 
-
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
@@ -22,7 +21,6 @@ router.get('/oauth2callback', passport.authenticate(
     failureRedirect: '/gigs'
   }
 ));
-
 
 router.get('/logout', function(req, res){
   req.logout(function() {
