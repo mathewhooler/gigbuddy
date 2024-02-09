@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const title = 'New Gig';
 
 const gigsCtrl = require('../controllers/gigs');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
