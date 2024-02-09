@@ -6,10 +6,9 @@ module.exports = {
   index,
   show,
   new: newGig,
-  delete: deleteGig,
   update,
   create,
-  edit,
+  addComment,
 };
 
 async function index(req, res) {
@@ -39,39 +38,33 @@ async function update(req, res) {
   res.redirect(`/gigs/${gig._id}`);
 }
 
+async function addComment(req, res) {
+  const gig = await Gig.findOne(req.params.id);
 
+  const newComment = { text: req.body.text };
 
-async function deleteGig(req, res) {
-  await Gig.findOneAndDelete(
-    {_id: req.params.id,}
-  );
-  res.redirect('/gigs');
+  gig.comments.push(newComment);
+
+  try {
+    await gig.save();
+  } catch (e) {
+    console.log(e.message);
+  }
+  res.redirect(`/gigs/${gig.id}`);
 }
-
-async function edit(req, res) {
-  const gig = await Gig.findOne({'comments._id': req.params.id});
-  const comment = gig.comments.id(req.params.id);
-  res.render('comments/edit', { comment });
-}
-
-
 
 
 async function create(req, res) {
-  console.log(req.body);
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key];
-  }
   try {
-    const gig = await Gig.create(req.body);
+    const gig = await Gig.findById(req.params.id);
     req.body.userId = req.user._id;
     req.body.userName = req.user.name;
-    res.redirect(`/gigs/${gig._id}`);
+    // res.redirect(`/gigs/${gig._id}`);
     gig.comments.push(req.body);
     await gig.save();
   } catch (err) {
     console.log(err);
-    res.render('gigs/new', { errorMsg: err.message });
+    // res.render('gigs/new', { errorMsg: err.message });
   }
-  res.redirect(`/gigs/${gig._id}`);
+  res.redirect(`/gigs/${gig.id}`);
 };
