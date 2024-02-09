@@ -4,8 +4,21 @@ module.exports = {
   index,
   show,
   new: newGig,
-  create
+  delete: deleteGig,
+  create,
 };
+
+async function deleteGig(req, res) {
+  const gig = await Gig.findOne({ 
+    'gig._id': req.params.id,
+    'gig.user': req.user._id
+  });
+  if (!gig) return res.redirect('/gigs');
+
+  gig.remove(req.params.id);
+  await gig.save();
+  res.redirect(`/gigs/${gig._id}`);
+}
 
 async function index(req, res) {
   const gigs = await Gig.find({});
@@ -35,4 +48,4 @@ async function create(req, res) {
     res.render('gigs/new', { errorMsg: err.message });
   }
 
-}
+};

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const title = 'New Gig';
 
 const gigSchema = new Schema({
@@ -12,7 +11,7 @@ const gigSchema = new Schema({
   price:  {type: String,},
   ticketLink:   {type: String,},
   spotifyLink:  {type: String,},
-  eventInfo:     {type: String,},
+  eventInfo:    {type: String,},
 }, {
   timestamps: true
 });
