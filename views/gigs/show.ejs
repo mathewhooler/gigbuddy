@@ -20,8 +20,8 @@
   <div>Price: </div>
       <div><%= gig.price %></div>
 
-  <div>Ticket Link: </div>
-      <div><a href="<%= gig.ticketLink %>" class="ticket-button" target="_blank">TICKETS</a></div>
+      <div>Ticket Link: </div>
+      <div><button onclick="window.open('<%= gig.ticketLink %>', '_blank')" class="ticket-button">TICKETS</button></div>
 
   <div>Event Info: </div>
       <div><%= gig.eventInfo %></div>

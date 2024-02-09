@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 
+<link rel="stylesheet" href="/Users/mathewhooler/code/GA/PROJECT 2/gig-buddy/gigbuddy/public/stylesheets/style.css">
+
 <% if (user) { %>
   <table id="list">
     <thead>
@@ -14,8 +16,10 @@
           <td><%= m.title %></td>
           <td>
             <a href="/gigs/<%= m._id %>">DETAILS</a>
-            <a href="/gigs/update/<%= m._id %>">UPDATE</a>
-            <form method="POST" action="/gigs/delete/<%= m._id %>" style="display: inline;">
+            <form method="PUT" action="/gigs/<%= m._id %>" style="display: inline;" class="update-button">
+              <button type="submit">EDIT</button>
+            </form>
+            <form method="DELETE" action="/gigs/<%= m._id %>" style="display: inline;" class="delete-button">
               <button type="submit">DELETE</button>
             </form>
           </td>
@@ -24,5 +28,6 @@
     </tbody>
   </table>
   <% } %>
+  
   
 <%- include('../partials/footer') %>

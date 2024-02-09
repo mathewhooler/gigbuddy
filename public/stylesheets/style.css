@@ -225,3 +225,19 @@ table td {
 .custom-date-input:focus {
   border-color: #007bff;
 }
+
+.delete-button {
+  color: rgb(255, 0, 0);
+}
+
+.update-button {
+  color: rgb(0, 0, 255);
+}
+
+.ticket-button {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background: green
+}
+
