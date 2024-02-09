@@ -26,8 +26,24 @@
   <div>Event Info: </div>
       <div><%= gig.eventInfo %></div>
 
-</section>
+
+      
+    </section>
+    
 
 
+    <form action="/gigs/<%= gig._id %>/comments" method="POST" style="display: inline;">
+
+                 <input name="text">
+                   <button type="submit">ADD COMMENT</button>
+ 
+     <form action="/comments/<%= gig._id %>?_method=PUT" method="POST" style="display: inline;">
+                 <button type="submit">UPDATE COMMENT</button>
+     </form>
+     
+    <form action="/comments/<%= gig._id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit">DELETE COMMENT</button>
+    </form>
+    
 
 <%- include('../partials/footer') %>

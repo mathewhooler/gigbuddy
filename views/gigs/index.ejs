@@ -4,8 +4,7 @@
   <table id="list">
     <thead>
       <tr>
-        <th><%= title %></th>
-        <th>Actions</th>
+        <th>GIG BOARD</th>
       </tr>
     </thead>
     <tbody>
@@ -14,12 +13,7 @@
           <td><%= m.title %></td>
           <td>
             <a href="/gigs/<%= m._id %>">DETAILS</a>
-            <form method="PUT" action="/gigs/<%= m._id %>" style="display: inline;" class="update-button">
-              <button type="submit">EDIT</button>
-            </form>
-            <form method="DELETE" action="/gigs/<%= m._id %>" style="display: inline;" class="delete-button">
-              <button type="submit">DELETE</button>
-            </form>
+          </form>
           </td>
         </tr>
       <% }); %>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const title = 'New Gig';
 
 const userSchema = new Schema({
   name: String,

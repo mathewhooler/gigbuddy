@@ -1,4 +1,5 @@
 const Gig = require('../models/gig');
+const title = 'New Gig';
 
 module.exports = {
   index,
@@ -10,11 +11,27 @@ module.exports = {
   edit,
 };
 
+async function update(req, res) {
+  const gig = await Gig.findOne({'comments._id': req.params.id});
+  const commentSubdoc = gig.comments.id(req.params.id);
+  if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/gigs/${gig._id}`);
+
+  commentSubdoc.text = req.body.text;
+  try {
+    await gig.save();
+  } catch (e) {
+    console.log(e.message);
+  }
+  res.redirect(`/gigs/${gig._id}`);
+}
+
+
+
 async function deleteGig(req, res) {
   await Gig.findOneAndDelete(
     {_id: req.params.id,}
   );
-  res.redirect('/books');
+  res.redirect('/gigs');
 }
 
 async function edit(req, res) {
@@ -24,19 +41,19 @@ async function edit(req, res) {
 }
 
 
-async function update(req, res) {
-  try {
-    const updatedGig = await Gig.findOneAndUpdate(
-      {_id: req.params.id},
-      req.body,
-      {new: true}
-    );
-    return res.redirect(`/gigs/${updatedGig._id}`);
-  } catch (e) {
-    console.log(e.message);
-    return res.redirect('/gigs');
-  }
-}
+// async function update(req, res) {
+//   try {
+//     const updatedGig = await Gig.findOneAndUpdate(
+//       {_id: req.params.id},
+//       req.body,
+//       {new: true}
+//     );
+//     return res.redirect(`/gigs/${updatedGig._id}`);
+//   } catch (e) {
+//     console.log(e.message);
+//     return res.redirect('/gigs');
+//   }
+// }
 
 async function index(req, res) {
   const gigs = await Gig.find({});

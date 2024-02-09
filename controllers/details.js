@@ -1,4 +1,5 @@
 const Gig = require('../models/gig');
+const title = 'New Gig';
 
 module.exports = {
   create,
