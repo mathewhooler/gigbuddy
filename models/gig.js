@@ -3,32 +3,16 @@ const Schema = mongoose.Schema;
 
 const title = 'New Gig';
 
-const detailsSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  support: {
-    type: String,
-    required: true
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  userName: String,
-  userAvatar: String
-}, {
-  timestamps: true
-});
-
 const gigSchema = new Schema({
-  title: {type: String, required: true},
-  venue: {type: String,},
-  date:  {type: String,},
-  time:  {type: String,},
-  details: [detailsSchema]
+  title:  {type: String, required: true},
+  venue:  {type: String, required: true},
+  date:   {type: String, required: true},
+  time:   {type: String,},
+  support:{type: String,},
+  price:  {type: String,},
+  ticketLink:   {type: String,},
+  spotifyLink:  {type: String,},
+  eventInfo:     {type: String,},
 }, {
   timestamps: true
 });
