@@ -1,9 +1,10 @@
 <%- include('../partials/header') %>
 
+<% if (user) { %>
 <table id="list">
   <thead>
     <tr>
-      <th>Title</th>
+      <th><%= title %></th>
       <th></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       </tr>
       <% }); %>
     </tbody>
+    <% } %>
   </table>
   
 <%- include('../partials/footer') %>

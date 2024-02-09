@@ -4,7 +4,7 @@ const detailsCtrl = require('../controllers/details');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 
-router.post('/gigs/:id/details', ensureLoggedIn, detailsCtrlCtrl.create);
+router.post('/gigs/:id/details', ensureLoggedIn, detailsCtrl.create);
 
 router.delete('/details/:id', ensureLoggedIn, detailsCtrl.delete);
 

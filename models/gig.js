@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const title = 'New Gig';
+
 const detailsSchema = new Schema({
-  content: {
+  title: {
     type: String,
     required: true
   },
@@ -22,7 +24,7 @@ const detailsSchema = new Schema({
 });
 
 const gigSchema = new Schema({
-  title: { type: String, required: true },
+  title: {type: String, required: true},
   venue: {type: String,},
   date:  {type: String,},
   time:  {type: String,},

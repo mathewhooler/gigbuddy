@@ -9,12 +9,12 @@ module.exports = {
 
 async function index(req, res) {
   const gigs = await Gig.find({});
-  res.render('gigs/index', { title: 'GIG BOARD', gigs });
+  res.render('gigs/index', { title: '', gigs });
 }
 
 async function show(req, res) {
   const gig = await Gig.findById(req.params.id);
-  res.render('gigs/show', { title: 'Gig Details', movie });
+  res.render('gigs/show', { title: 'GIG DETAILS', gig });
 }
 
 function newGig(req, res) {
@@ -22,6 +22,7 @@ function newGig(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.body);
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
   }
@@ -33,4 +34,5 @@ async function create(req, res) {
     console.log(err);
     res.render('gigs/new', { errorMsg: err.message });
   }
+
 }

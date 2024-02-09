@@ -1,45 +1,15 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div>Title: </div>
+  <div class="image-container">
+    <img src="your_image.jpg" alt="Your Image">
+  </div>
+  <div><%=title%></div>
   <div><%= gig.title %></div>
   <div>Date: </div>
   <div><%= gig.date %></div>
   
-  <div class="image-container">
-    <img src="your_image.jpg" alt="Your Image">
-  </div>
 </section>
-
-<br><br><h2>Details</h2>
-<form id="add-details-form" method="POST"
-  action="/gig/<%= gig._id %>/details">
-  <label>Details:</label>
-    <input
-      type="text"
-      name="venue">
-  <label>Support:</label>
-    <input
-      type="text"
-      name="support">
-  <label>Time:</label>
-    <input
-      type="text"
-      id="time"
-      name="time">
-  <label>Price:</label>
-    <input
-      type="text"
-      name="price">
-  <label>Ticket Link:</label>
-    <input
-      type="url"
-      name="website">
-  <label>Spotify Link:</label>
-    <input
-      type="url"
-      name="website">
-</form>
 
 <% if (gig.details.length) { %>
   <table>
@@ -53,7 +23,7 @@
     </thead>
     <tbody>
       <% let total = 0 %>
-      <% .details.forEach(function(r) { %>
+      <% details.forEach(function(r) { %>
         <% total += r.rating %>
         <tr>
           <td class="details-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
