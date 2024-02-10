@@ -74,7 +74,17 @@ nav > a.active {
 #new-form {
   display: grid;
   grid-gap: 10px;
+  color: black;
   grid-template-columns: repeat(2, minmax(auto, 22rem));
+}
+form, form * { 
+  color: black !important;
+  align-items: center;
+  margin-top: 30px;
+}
+
+textarea {
+
 }
 
 #new-form *,
@@ -82,12 +92,15 @@ nav > a.active {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
+  color: black;
 }
 
 #new-form input[type="submit"] {
+  color: black;
   grid-column: span 2;
   width: 10rem;
   margin-left: auto;
+  align-items: left;
 }
 
 table {

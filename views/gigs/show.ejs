@@ -29,20 +29,27 @@
 
       
     </section>
-    
-<!-- Using the RESTful route to send the book's id to the server -->
-<!-- <form action="/gigs/<%= gig.id %>/comment/add" method="PUT"> -->
-    <!-- Be sure name attributes of inputs match the model properties -->
-    <!-- <input name="text">
-    <button type="submit">ADD COMMENT</button>
-  </form> -->
 
-  <!-- Using the RESTful route to send the book's id to the server -->
-<form action="/gigs/<%= gig._id %>/comments" method="POST">
-    <!-- Be sure name attributes of inputs match the model properties -->
-    <input name="text">
-    <button type="submit">ADD COMMENT</button>
-  </form>
+    <% if (user) { %>
+        <form action="/gigs/<%= gig._id %>/comments" method="POST">
+            <input type="text" name="title" hidden value="<%= gig._id %>_comment">
+            <input name="description" type="text">
+                <button type="submit" value="New Comment">ADD COMMENT</button>
+            </form>
+            <% } %>
+            <% if (gig.comments.length) { %>
+                <div style="display:flex; max-width: 50%; flex-direction: column;">
+                <% gig.comments.forEach ((g) => { %>
+                    <form action="/gigs/<%= gig._id %>/comments/<%= g._id %>/?_method=PUT" method="POST" style="margin: 0 !important;">
+                        <input type="text" name="description" value="<%= g.description %>" style="max-width: 100%;">
+                        <button type="submit" style="margin: 0 !important; min-width: 100%;" >UPDATE COMMENT</button>
+                    </form>
+                    <form action="/gigs/<%= gig._id %>/comments/<%= g._id %>/?_method=DELETE" method="POST" style="margin: 0 !important;">
+                        <button type="submit" style="margin: 0 !important; min-width: 100%;">DELETE COMMENT</button>
+                    </form>
+                        <% }) %>
+                    </div>
+    <% } %>
 
 
 <%- include('../partials/footer') %>

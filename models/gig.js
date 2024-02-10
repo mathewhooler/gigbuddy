@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const title = 'New Gig';
+
 const gigSchema = new Schema({
   title:  {type: String, required: true},
   venue:  {type: String, required: true},
@@ -11,14 +11,12 @@ const gigSchema = new Schema({
   ticketLink:   {type: String,},
   spotifyLink:  {type: String,},
   eventInfo:    {type: String,},
-  comments: {
-    type: [
-      {
-        text: { type: String },
-        id: { type: String },
-        author: { type: String },
-      }
-    ]
+  comments: [{
+    type: Schema.Types.ObjectId,ref:"comments"
+  }],
+
+  user: {
+    type: Schema.Types.ObjectId,ref:"User"
   }
 }, {
   timestamps: true

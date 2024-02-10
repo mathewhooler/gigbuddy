@@ -14,6 +14,7 @@ require('./config/passport');
 
 const indexRouter = require('./routes/index');
 const gigsRouter = require('./routes/gigs');
+const commentsRouter = require('./routes/comments');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/gigs', gigsRouter);
+app.use('/', commentsRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,15 +1,15 @@
 <%- include('../partials/header') %>
 
-<% if (user) { %>
-  <table id="list">
-    <thead>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>GIG BOARD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% gigs.forEach(function(m) { %>
       <tr>
-        <th>GIG BOARD</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% gigs.forEach(function(m) { %>
-        <tr>
           <td><%= m.title %></td>
           <td>
             <a href="/gigs/<%= m._id %>">DETAILS</a>
@@ -19,7 +19,7 @@
       <% }); %>
     </tbody>
   </table>
-  <% } %>
-  
+
+
   
 <%- include('../partials/footer') %>
