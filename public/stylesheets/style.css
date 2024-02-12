@@ -96,7 +96,7 @@ textarea {
 }
 
 #new-form input[type="submit"] {
-  color: black;
+  color: rgb(228, 228, 228);
   grid-column: span 2;
   width: 10rem;
   margin-left: auto;

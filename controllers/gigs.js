@@ -42,11 +42,7 @@ async function update(req, res) {
 
 
 async function create(req, res) {
-
-
-
-
-  try {
+try {
     req.body.user=req.user._id;
     const gig = await Gig.create(req.body);
     console.log(await user.findById(req.user._id))
